@@ -10,7 +10,7 @@ source:
   sha256: 304636d4eccd81a14b6914d07b84c79ebb815288c76fe027b9ebff6ff24d5705
 
 build:
-  number: 0
+  number: 1
   skip: win
   script:
     - ./configure --prefix=${{ PREFIX }}
@@ -24,6 +24,8 @@ requirements:
     - make
     - if: osx
       then: gawk
+  run_exports:
+    - ${{ pin_subpackage('hyphen', exact=True) }}
 
 tests:
   - package_contents:
